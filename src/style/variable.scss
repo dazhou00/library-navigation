@@ -1,0 +1,14 @@
+@use 'sass:list';
+
+$theme: 'light' 'dark';
+$backgroundColor: #fff #000;
+
+$pre: '--';
+
+@each $className in $theme {
+  $colorIndex: list.index($theme, $className);
+
+  :root.#{$className} {
+    #{$pre}backgroundColor: list.nth($backgroundColor, $colorIndex);
+  }
+}
