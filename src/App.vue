@@ -1,20 +1,17 @@
 <template>
   <el-container style="width: 100%; height: 100%">
-    <el-aside :width="menuCollapse ? 60 : 200">
-      <el-scrollbar ref="scrollbar">
-        <el-affix>
-          <div>导航</div>
-          <el-icon @click="menuCollapse = !menuCollapse">
-            <Fold v-if="!menuCollapse" />
-            <Expand v-else />
-          </el-icon>
-        </el-affix>
+    <el-aside :width="menuCollapse ? '60px' : '200px'" class="flex flex-column">
+      <div class="ln-title">知识导航</div>
 
+      <el-scrollbar ref="scrollbar" style="flex: 1">
         <ln-menu :collapse="menuCollapse"></ln-menu>
       </el-scrollbar>
     </el-aside>
 
-    <ln-view></ln-view>
+    <el-container class="flex-column">
+      <ln-header @tologgleCollapse="menuCollapse = $event" />
+      <ln-view />
+    </el-container>
   </el-container>
 </template>
 
@@ -22,14 +19,10 @@
 import { ref, watch } from "vue";
 
 import LnMenu from "./menu/main.vue";
+import LnHeader from "./view/header.vue";
 import LnView from "./view/main.vue";
 
 const menuCollapse = ref(false);
-
-const scrollbar = ref();
-watch(menuCollapse, () => {
-  scrollbar.value.update();
-});
 </script>
 
 <style></style>

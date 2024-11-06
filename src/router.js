@@ -1,11 +1,19 @@
 import { createRouter, createWebHistory } from "vue-router";
+import { menus } from "./menu/index.js";
 
 const routes = [
-  { path: "/", component: () => import("./navigation/index.vue") },
   {
-    path: "/javascript",
-    compoent: () => import("./navigation/javascript/main.vue"),
+    path: "/",
+    name: "index",
+    component: () => import("./navigation/index.vue"),
   },
+  ...menus.map((item) => {
+    return {
+      path: item.path,
+      name: item.name,
+      component: () => import("./navigation/" + item.name + "/main.vue"),
+    };
+  }),
 ];
 
 const router = createRouter({

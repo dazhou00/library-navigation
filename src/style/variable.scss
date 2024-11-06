@@ -2,6 +2,9 @@
 
 $theme: 'light' 'dark';
 $backgroundColor: #fff #000;
+$color: #333 #ccc;
+$parmary: #409eff #409eff;
+$borderColor: #ddd #333;
 
 $pre: '--';
 
@@ -10,5 +13,8 @@ $pre: '--';
 
   :root.#{$className} {
     #{$pre}backgroundColor: list.nth($backgroundColor, $colorIndex);
+    #{$pre}color: list.nth($color, $colorIndex);
+    #{$pre}parmary: list.nth($parmary, $colorIndex);
+    #{$pre}borderColor: list.nth($borderColor, $colorIndex);
   }
 }
